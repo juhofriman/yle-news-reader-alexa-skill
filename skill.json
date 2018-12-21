@@ -1,0 +1,29 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Reads news from YLE news",
+          "examplePhrases": [
+            "Alexa read news using yle news reader"
+          ],
+          "name": "yle-news-reader",
+          "description": "Reads news from YLE english news. Yle must be pronounced as \"vai-lii\""
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "NEWS",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom",
+          "uri": "ask-custom-yle-news-reader-default"
+        }
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

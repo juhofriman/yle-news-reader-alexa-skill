@@ -1,0 +1,33 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.634ed43b-d129-44e4-a850-ae6d64b0e020",
+      "was_cloned": false,
+      "merge": {},
+      "resources": {
+        "manifest": {
+          "eTag": "c09962157e0d50c84d29e6bfdc6f671d"
+        },
+        "interactionModel": {
+          "en-US": {
+            "eTag": "c25b2c9a19d4ba3c56a6a2d3ac1d52e5"
+          }
+        },
+        "lambda": [
+          {
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "arn": "arn:aws:lambda:us-east-1:634214176572:function:ask-custom-yle-news-reader-default",
+            "awsRegion": "us-east-1",
+            "codeUri": "lambda/custom",
+            "functionName": "ask-custom-yle-news-reader-default",
+            "handler": "index.handler",
+            "revisionId": "a0aa6778-6994-4d8e-8279-266bcdfafd12",
+            "runtime": "nodejs8.10"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "c25b2c9a19d4ba3c56a6a2d3ac1d52e5"
+            "eTag": "65af77e9fdb82b27588cf7cccafbff63"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-yle-news-reader-default",
             "handler": "index.handler",
-            "revisionId": "a0aa6778-6994-4d8e-8279-266bcdfafd12",
+            "revisionId": "c504225e-d8c3-48e3-a496-76e01108a098",
             "runtime": "nodejs8.10"
           }
         ]

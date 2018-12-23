@@ -5,12 +5,17 @@ const Alexa = require('ask-sdk-core');
 const Parser = require('rss-parser');
 const parser = new Parser();
 
+function getCount(handlerInput) {
+  return handlerInput.requestEnvelope.request.intent.slots.count.value ? handlerInput.requestEnvelope.request.intent.slots.count.value : 3;
+}
+
+
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the YLE news reader. I read YLE news for you!';
+    const speechText = 'Hi! I\'m <say-as interpret-as="characters">YLE</say-as> news reader. I read <say-as interpret-as="characters">YLE news</say-as> for you!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -19,21 +24,36 @@ const LaunchRequestHandler = {
   },
 };
 
+const ListHeadingsIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'ListHeadingsIntent';
+  },
+  handle(handlerInput) {
+    const count = getCount(handlerInput);
+    return parser.parseURL('https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_NEWS').then(result => {
+        const news = result.items.splice(0, count).map(item => {
+            return '<p>' + item.title + '</p>';
+        }).join('');
+        const speechText = 'Here are the latest <say-as interpret-as="characters">YLE</say-as> news. ' + news;
+        return handlerInput.responseBuilder
+          .speak(speechText)
+          .getResponse();
+    });
+  },
+};
+
+
 const ReadNewsIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
       && handlerInput.requestEnvelope.request.intent.name === 'ReadNewsIntent';
   },
   handle(handlerInput) {
-    return parser.parseURL('https://feeds.yle.fi/uutiset/v1/recent.rss?publisherIds=YLE_NEWS').then(result => {
-        const news = result.items.splice(0, 3).map(item => {
-            return item.title;
-        }).join('. Proceeding to the next. ');
-        const speechText = 'Here are the latest YLE news. ' + news + '. That is the latest.';
-        return handlerInput.responseBuilder
-          .speak(speechText)
-          .getResponse();
-    });
+    const speechText = 'This intent reads full story';
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .getResponse();
   },
 };
 
@@ -97,6 +117,7 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
+    ListHeadingsIntentHandler,
     ReadNewsIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,

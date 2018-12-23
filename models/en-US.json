@@ -16,6 +16,26 @@
           "samples": []
         },
         {
+          "name": "ListHeadingsIntent",
+          "slots": [
+            {
+              "name": "count",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "give me latest headings",
+            "give me latest titles",
+            "give me latest topics",
+            "give me the latest headings",
+            "give me the latest titles",
+            "give me the latest topics",
+            "give me {count} latest headings",
+            "give me {count} latest titles",
+            "give me {count} latest topics"
+          ]
+        },
+        {
           "name": "ReadNewsIntent",
           "samples": [
             "read news"

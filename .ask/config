@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-yle-news-reader-default",
             "handler": "index.handler",
-            "revisionId": "c504225e-d8c3-48e3-a496-76e01108a098",
+            "revisionId": "76ddcbd8-d82c-471f-b592-54d978eff6c8",
             "runtime": "nodejs8.10"
           }
         ]

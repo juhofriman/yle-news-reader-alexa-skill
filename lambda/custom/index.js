@@ -15,7 +15,7 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Hi! I\'m <say-as interpret-as="characters">YLE</say-as> news reader. I read <say-as interpret-as="characters">YLE news</say-as> for you!';
+    const speechText = 'Hi! I\'m <say-as interpret-as="characters">YLE</say-as> news reader. I read <say-as interpret-as="characters">YLE</say-as> news for you!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
